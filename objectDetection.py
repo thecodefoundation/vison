@@ -117,10 +117,10 @@ for image_path in path_to_images:
     
     output_dict = run_inference_onImage(image_np, detectionGraph)
 
-    print('*************************************************************')
-    print(output_dict['detection_scores'])
-    print(output_dict['detection_classes'])
-    print('*************************************************************')
+##    print('*************************************************************')
+##    print(output_dict['detection_scores'])
+##    print(output_dict['detection_classes'])
+##    print('*************************************************************')
     
     ### use counter get a dict of ids. add values coreesponding
     ### to index of id in scores. mean of values. hurrah!
@@ -139,6 +139,5 @@ for image_path in path_to_images:
 
     object_detected_dict['image{}'.format(img_num)] = main_dict
     
-    print('*************************************************************')
 
 
