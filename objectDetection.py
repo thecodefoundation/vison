@@ -75,7 +75,7 @@ def load_image_into_numpy_array(image):
 
 ## load data(image)
 
-path_to_images_dir = 'E:/theCodeFoundation/vison/images'
+path_to_images_dir = os.path.abspath('images')
 path_to_images = [os.path.join(path_to_images_dir,
                                'image{}.jpg'.format(i)) for i in range(1,
                                         len(os.listdir(path_to_images_dir))+1)]
