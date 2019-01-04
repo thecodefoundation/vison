@@ -23,3 +23,16 @@ So The Code Foundation is going all out with its new project "The Vison" which g
 2. We will then index based on various techniques to collect, parse and store data to facilitate fast and accurate information retrival. 
 
 3. As per the search query Vison would look into it's indexed data and as per the ranking of the content throw back the most relevant and popular results.
+
+### Instructions (To get contributing started)
+
+#### Requirements:
+
+1. Anaconda
+2. Tensorflow (>1.9.0) 
+
+#### Steps:
+
+1. Clone this repository in your local directory
+2. Run __download_model.py__ script. This will download and extract the frozen tensorflow model. By default we are using 'SSD with mobilenet'. 
+3. Next run __objectdetected_dict.py__ script. This will load the frozen model into the memory, load the path to images directory and run object detection on each image. This will output a dictionary containing objects detected in images along with there confidence point. 
