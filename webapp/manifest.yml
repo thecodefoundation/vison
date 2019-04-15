@@ -1,0 +1,5 @@
+---
+applications:
+ - name: tcf-vison
+   host: tcf-vison
+   memory: 4096M
