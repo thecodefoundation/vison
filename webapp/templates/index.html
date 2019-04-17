@@ -28,12 +28,20 @@
 
       <div class="jumbotron">
         <h3 class="jumbotronHeading">Draw inside this Box!</h3>
-    <div class="slidecontainer">
-      <p>Drag the slider to change the line width.</p>
-      <input type="range" min="10" max="50" value="15" id="myRange">
-      <p>Value: <span id="sliderValue"></span></p>
-    </div>
-    <div class="canvasDiv">
+        <div class="slidecontainer">
+          <p>Drag the slider to change the line width.</p>
+            <input type="range" min="10" max="50" value="15" id="myRange">
+          <p>Value: <span id="sliderValue"></span></p>
+          <br><br>
+        <p>Upload image</p>
+        <form id="upload-form" action="{{ url_for('upload')}}" method="post" enctype="multipart/form-data">
+          <input type="file" name="file" accept="image/*">
+          <input type="submit" value="predict" id="predict-file">
+        </form>
+
+        </div>
+
+        <div class="canvasDiv">
           <canvas id="canvas" width="350" height="350"></canvas>
           <br>
           <p style="text-align:center;">
@@ -44,11 +52,28 @@
       </div>
 
       <div class="jumbotron">
-      	<p id="result"></p>
+        {% if upload %}
+            <table class="table table-dark table-hover">
+                <thead>
+                  <h3>Prediction Results</h3>
+                </thead>  
+                <tbody>
+                    {% for elem in sorted_dict %}
+                    <tr> 
+                        <td>{{ elem[0] }}</td>
+                        <td>{{ elem[1] }}</td> 
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        {% endif%}
+      <p id='result'>
+        
+      </p>  
       </div>
 
       <footer class="footer">
-        <p>&copy; 2019 &middot; Anubhav Singh</p>
+        <p>&copy; 2019 &middot; TCF</p>
       </footer>
 
     </div>
@@ -58,7 +83,7 @@
 
     <script src="{{ url_for('static',filename='index.js') }}"></script>
 
-    <script type="text/javascript">
+   <script type="text/javascript">
      
     $("#predict-btn").click(function(){
       $('#predict-btn').prop('disabled', true);
@@ -82,8 +107,11 @@
         }
       });
     });
-   
+
    	</script>
+   
+
+
 
   </body>
 </html>
