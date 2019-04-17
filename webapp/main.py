@@ -125,10 +125,30 @@ def predict():
 
     return(str(r))
     
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg'])
+
+@app.route("/upload", methods=['POST'])
+def upload():
+    target = os.path.join(APP_ROOT, 'images/')
+    print(target)
+
+    if not os.path.isdir(target):
+        os.mkdir(target)
+
+    for file in request.files.getlist("file"):
+        print(file)
+        filename = file.filename
+        destination = "/".join([target, filename])
+        file.save(destination)
+
+    return render_template("complete.html")
+
+
 
 if __name__ == "__main__":
 
     port = int(os.getenv('PORT', 8000))
 
-    app.run(host='0.0.0.0', port=port)
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
+    # app.run(debug=True)
