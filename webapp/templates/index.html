@@ -36,7 +36,7 @@
         <p>Upload image</p>
         <form id="upload-form" action="{{ url_for('upload')}}" method="post" enctype="multipart/form-data">
           <input type="file" name="file" accept="image/*">
-          <input type="submit" value="send">
+          <input type="submit" value="predict" id="predict-file">
         </form>
 
         </div>
@@ -56,7 +56,7 @@
       </div>
 
       <footer class="footer">
-        <p>&copy; 2019 &middot; debugging</p>
+        <p>&copy; 2019 &middot; TCF</p>
       </footer>
 
     </div>
@@ -80,7 +80,7 @@
         success: function(data){
           var tb = "<table class='table table-hover'><thead><tr><th>Item</th><th>Confidence</th></thead><tbody>";
           var res = JSON.parse(data);
-          // console.log(res);
+          console.log(res);
           for(var i=0;i < res.length ; i++){
             tb += "<tr><td>"+res[i][0]+"</td><td>"+res[i][1]+"</td></tr>";
           }

@@ -136,15 +136,39 @@ def upload():
     if not os.path.isdir(target):
         os.mkdir(target)
 
-    for file in request.files.getlist("file"):
-        print(file)
-        filename = file.filename
-        destination = "/".join([target, filename])
-        file.save(destination)
+    file = request.files['file']
+    filename = file.filename
+    dst = "/".join([target, filename])
+    file.save(dst)
 
-    return render_template("complete.html")
+    img = Image.open(dst)
+    img_np = load_image_into_numpy_array(img)
+    # print(img_np.shape)
+    img_np_expanded = np.expand_dims(img_np, axis=0)
+    # print(img_np_expanded.shape)
 
+    out_dict = run_inference_onImage(img_np, detectionGraph)
+    # print(out_dict)
+    counter_dict = Counter(out_dict['detection_classes'])
+    # print(counter_dict)
+    main_dict = dict()
 
+    for ID in counter_dict.keys():
+    	indices = [i for i, x in enumerate(out_dict['detection_classes']) if x==ID]
+    	for_sum = []
+    	for index in indices:
+    		for_sum.append(out_dict['detection_scores'][index])
+    	prob = sum(for_sum)/len(out_dict['detection_scores'])
+    	main_dict[list(category_index[ID].values())[1]] = prob*100
+
+    # print(main_dict)  
+
+    sorted_dict = sorted(main_dict.items(), key=lambda x: x[1], reverse=True)
+    print(sorted_dict)
+
+    os.remove(dst)
+    r = json.dumps(sorted_dict)
+    return(str(r))
 
 if __name__ == "__main__":
 
