@@ -52,6 +52,21 @@
       </div>
 
       <div class="jumbotron">
+        {% if upload %}
+            <table class="table table-dark table-hover">
+                <thead>
+                  <h3>Prediction Results</h3>
+                </thead>  
+                <tbody>
+                    {% for elem in sorted_dict %}
+                    <tr> 
+                        <td>{{ elem[0] }}</td>
+                        <td>{{ elem[1] }}</td> 
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        {% endif%}
       	<p id="result"></p>
       </div>
 

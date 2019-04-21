@@ -130,6 +130,8 @@ ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg'])
 
 @app.route("/upload", methods=['POST'])
 def upload():
+
+    upload = True
     target = os.path.join(APP_ROOT, 'images/')
     print(target)
 
@@ -167,8 +169,8 @@ def upload():
     print(sorted_dict)
 
     os.remove(dst)
-    r = json.dumps(sorted_dict)
-    return(str(r))
+
+    return render_template('index.html', upload=upload, sorted_dict=sorted_dict)
 
 if __name__ == "__main__":
 
