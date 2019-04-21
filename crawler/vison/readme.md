@@ -1,10 +1,10 @@
 ## Crawler
 
 - Downloads
-1. Sqlite - [https://www.sqlite.org/download.html]here (make sure to add it to your path)
+1. Sqlite - <a href="https://www.sqlite.org/download.html">here</a> (make sure to add it to your path)
 
 - Packages needed
-1. Scrapy - [https://docs.scrapy.org/en/latest/intro/install.html]here
+1. Scrapy - <a href="https://docs.scrapy.org/en/latest/intro/install.html">here</a>
 
 After succesfull installation. Move to the vison directory.
 Create a sqlite database as follows:
