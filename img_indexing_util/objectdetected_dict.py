@@ -80,8 +80,10 @@ for image_path in path_to_images:
     image_np_expanded = np.expand_dims(image_np, axis = 0)
     
     output_dict = run_inference_onImage(image_np, detectionGraph)
+    print(output_dict)
     
     counter_dict = Counter(output_dict['detection_classes'])
+    print(counter_dict)
     main_dict = {}
     img_num = img_num + 1
     
@@ -96,6 +98,3 @@ for image_path in path_to_images:
     object_detected_dict['image{}'.format(img_num)] = main_dict
     
 print(object_detected_dict)
-
-
-
