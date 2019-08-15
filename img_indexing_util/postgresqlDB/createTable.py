@@ -14,7 +14,7 @@ try:
     print("You are connected to - ", record,"\n")
 
     create_table_query = '''CREATE TABLE image_index
-          (ID INT PRIMARY KEY     NOT NULL,
+          (ID SERIAL PRIMARY KEY     NOT NULL,
           image_id           text    NOT NULL,
           image_url         text
           ); '''

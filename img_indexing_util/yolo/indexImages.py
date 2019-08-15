@@ -57,7 +57,7 @@ def close_connection(connection):
 
 def insert_into_table(connection, out):
 
-	columns = ', '.join([key for key in out.keys()])
+	columns = ', '.join([key.replace(" ", "_") for key in out.keys()])
 	values = tuple(out.values())
 
 	try:
@@ -65,7 +65,7 @@ def insert_into_table(connection, out):
 		add_row_query = "INSERT INTO image_index ({0}) VALUES {1}".format(columns, values)
 		cursor.execute(add_row_query)
 		connection.commit()
-
+  
 		print("[INFO] Column added successfully")
 
 	except (Exception, psycopg2.DatabaseError) as error :
@@ -77,13 +77,14 @@ count = 0
 connection = establish_connection()
 
 for image in images:
-	if count==5:
+	if count==20:
 		close_connection(connection)
 		break
 
 	print('[INFO] Image name: ', image)
 	img = cv2.imread(imgPath+image)
 	out = detector.runInference(img)
+	#next time create table remove id from out. id will be auto increment.
 	out.update({'id': count, 'image_id': os.path.splitext(image)[0], 'image_url':'vison{}.com'.format(count)})
 
 	if args["bbox"] is not True:
@@ -94,6 +95,4 @@ for image in images:
 		cv2.waitKey()
 
 	count+=1
-
-
-
+	

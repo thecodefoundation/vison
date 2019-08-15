@@ -62,7 +62,7 @@ class yoloDetection:
 
 		return name_file, weights_file, config_file
 
-	def prepareModel(self):
+	def prepareModel(self, *args):
 		"""
 		Create model for forward inference.
 		return model
@@ -87,11 +87,14 @@ class yoloDetection:
 		self._ln = [self._ln[i[0] - 1] for i in self._net.getUnconnectedOutLayers()]
 		print("[INFO] loading successful...")
 
-		print("[INFO] loading label csv from disk...")
-		csv_file = self.getRequiredYOLOfiles('labelMap')
-		labelID_label = pd.read_csv(self.path_yolo_files+'/'+csv_file, header=None)
-		self.label_dict = labelID_label.T.to_dict('list')
-		print("[INFO] loading successful...")
+		if args[0] == 'search_detection':
+			pass
+		else:
+			print("[INFO] loading label csv from disk...")
+			csv_file = self.getRequiredYOLOfiles('labelMap')
+			labelID_label = pd.read_csv(self.path_yolo_files+'/'+csv_file, header=None)
+			self.label_dict = labelID_label.T.to_dict('list')
+			print("[INFO] loading successful...")
 
 	def runInference(self, frame):
 		"""
