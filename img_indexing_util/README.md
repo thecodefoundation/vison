@@ -57,9 +57,9 @@ We have tried listing all the requirements. In case something is left out do rai
 5. Run `createTable.py` . This will create the table named `image_index`. 
 6. Run `addColumns.py`. This will add all the classes that yolo is trained on as the column to `image_index`.
 7. Go to `img_indexing_util/yolo` and run `indexImages.py`. To do so use the following command line command `python indexImages.py -y yolo-coco -b False`. Make sure to change the image path to the downloaded dataset. (`imgPath` ) Your database will be populated with data. 
-8. Finally run `app.py`. To do so use the following command `python app.py -y yolo-coco -b False`. This will fire your flask server. Go to your browser and type `localhost:5000` on the URL box. You will find a simple form. ![](C:\Users\Ayush\Pictures\Screenshots\Screenshot (262).png)
+8. Finally run `app.py`. To do so use the following command `python app.py -y yolo-coco -b False`. This will fire your flask server. Go to your browser and type `localhost:5000` on the URL box. You will find a simple form. ![](yolo/images/index.png)
 
-9. Type in something like `person` or `cat` or `toothbrush` and you may get dummy links like. ![](C:\Users\Ayush\Pictures\Screenshots\Screenshot (263).png)
+9. Type in something like `person` or `cat` or `toothbrush` and you may get dummy links like. ![](yolo/images/search.png)
 
 ### To be done
 
