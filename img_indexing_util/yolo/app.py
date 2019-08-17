@@ -15,7 +15,7 @@ from detection.Detection import yoloDetection
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] ='AYUSH'
+app.config['SECRET_KEY'] ='VISON'
 
 def establish_connection():
 	try:

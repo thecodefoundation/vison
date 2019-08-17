@@ -71,6 +71,9 @@ def insert_into_table(connection, out):
 	except (Exception, psycopg2.DatabaseError) as error :
 	    print ("Error while creating PostgreSQL table", error)
 
+#########################################
+############## Change this path##########
+#########################################
 imgPath = 'E:/theCodeFoundation/open_source_images/images_set1/set1/'
 images = os.listdir(imgPath)
 count = 0
