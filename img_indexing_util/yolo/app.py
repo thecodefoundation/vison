@@ -51,7 +51,7 @@ def search_table(connection, search_query):
 		cursor.execute(select_query)
 		results = cursor.fetchall()
   
-		print("[INFO] Column added successfully")
+		print("[INFO] Search query successfully")
 		return results
 
 	except (Exception, psycopg2.DatabaseError) as error :
@@ -60,8 +60,13 @@ def search_table(connection, search_query):
 class MyForm(FlaskForm):
     name = StringField('Search: ', validators=[DataRequired()])
 
-@app.route('/', methods=('GET', 'POST'))
+@app.route('/')
 def index():
+	form = MyForm()
+	return render_template('home.html', form=form)
+
+@app.route('/', methods=('GET', 'POST'))
+def submit():
 	form = MyForm()
 	if form.validate_on_submit():
 		connection = establish_connection()
@@ -70,7 +75,9 @@ def index():
 		results = search_table(connection, search_query)
 		print(results)
 		close_connection(connection)
-	return render_template('home.html', form=form)
+	return render_template('home.html', form=form, results=results)
+
+
 
 if __name__ == '__main__':
 

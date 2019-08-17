@@ -14,6 +14,21 @@
 	    <input type="submit" value="submit">
 	</form>
 
+	{% if results %}
+        <table>
+            <thead>
+              <h3>Prediction Results</h3>
+            </thead>  
+            <tbody>
+                {% for link in results %}
+                <tr> 
+                    <td>{{ link[0] }}</td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>
+    {% endif%}
+
 
 
 </body>
