@@ -1,0 +1,93 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #246895;
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+.box_div {
+    width: 80%;
+    height: 80%;
+    background: #12AFFE;
+    color: #FFFFFF;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    border-radius: 15px;
+    text-align: center;
+}
+.box_div > .head > img {
+    padding: 20px;
+    margin: 10px;
+    color: #FFFFFF;
+    float: right;
+}
+.box_div > .box_body {
+    width: 100%;
+    text-align: center;
+    float: left;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 60%;
+    left:50%;
+    width: 100%;
+
+}
+.box_div .box_body .input_div {
+    justify-content: center;
+}
+.box_div .box_body .input_div input {
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 3px solid #FFFFFF;
+    width: 60%;
+}
+.box_div .box_body .input_div span {
+    margin-left: -30px;
+}
+.box_div .box_body .options .op {
+    display: inline-block;
+    padding: 25px;
+}
+.box_div .box_body .options .op .op1{
+    display: grid;
+}
+.box_div .footer{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+}
+.box_div .footer .location{
+    padding: 20px;
+    position: absolute;
+    transform: translate(-0%,-100%);
+}
+.box_div .footer .location .loc1{
+    display: flex;
+}
+.box_div .footer .location .loc1 h6{
+    margin: 0;
+    margin-left: 10px;
+}
+
+.box_div .footer .scroll {
+    width: 100%;
+    position: absolute;
+    transform: translate(-50%, -95%);
+    left: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+.link:active {
+    animation-name: slide;
+}
+
+@keyframes slide {
+    0% {left: 0;top:0;}
+    50%{left: 244px;top: 100px;}
+}
